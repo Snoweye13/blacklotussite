@@ -200,7 +200,8 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:32px 0}
       <a href="#tournaments" class="btn-secondary">Турниры →</a>
     </div>
     <div class="stats-row">
-      <div class="stat"><div class="stat-num gradient-text">500+</div><div class="stat-label">Участников</div></div>
+      <div class="stat"><div class="stat-num gradient-text" id="stat-members">500+</div><div class="stat-label">Участников</div></div>
+      <div class="stat"><div class="stat-num gradient-text" id="stat-online">—</div><div class="stat-label">Онлайн</div></div>
       <div class="stat"><div class="stat-num gradient-text">12</div><div class="stat-label">Турниров</div></div>
       <div class="stat"><div class="stat-num gradient-text">30+</div><div class="stat-label">Команд бота</div></div>
       <div class="stat"><div class="stat-num gradient-text">2</div><div class="stat-label">Кастомных бота</div></div>
@@ -383,6 +384,13 @@ for(const d of dots){
 }
 requestAnimationFrame(draw)}
 draw()})();
+
+// Discord stats
+fetch('https://discord.com/api/guilds/726800846737768488/widget.json')
+.then(r=>r.json()).then(d=>{
+  if(d.presence_count)document.getElementById('stat-online').textContent=d.presence_count;
+  if(d.members)document.getElementById('stat-members').textContent=d.members.length>0?d.approximate_member_count||'500+':'500+';
+}).catch(()=>{});
 </script>
 </body>
 </html>
