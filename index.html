@@ -115,6 +115,22 @@ section{padding:120px 0}
 .ec-t{font-family:var(--font-d);font-weight:700;font-size:17px;color:var(--text);margin-bottom:8px}
 .ec-d{color:var(--text3);font-size:14px;line-height:1.6}
 
+/* Bot Commands */
+.cmds{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:24px}
+.cmd{background:var(--bg2);border-radius:12px;padding:16px 14px;transition:all .3s}
+.cmd:hover{background:var(--bg3)}
+.cmd-name{font-family:'SF Mono',SFMono-Regular,Consolas,monospace;font-size:13px;font-weight:600;color:var(--text)}
+.cmd-desc{font-size:11px;color:var(--text3);line-height:1.45;margin-top:4px}
+.cmds-more{background:var(--bg2);border-radius:12px;padding:16px 14px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--blue);transition:background .3s}
+.cmds-more:hover{background:var(--bg3)}
+@media(max-width:768px){.cmds{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.cmds{grid-template-columns:1fr}}
+
+/* Join Staff CTA */
+.join-staff{margin-top:36px;text-align:center;padding:40px 32px;background:linear-gradient(135deg,#e8f0fe,#f0e6ff);border-radius:20px}
+.join-staff p{font-size:15px;color:var(--text2);margin-bottom:16px}
+.join-staff .stitle{font-size:clamp(20px,3vw,28px);margin-bottom:8px}
+
 /* Staff */
 .staff-layout{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:36px}
 .staff-card{background:var(--bg2);border-radius:16px;padding:20px 16px;text-align:center;transition:all .3s}
@@ -163,6 +179,23 @@ section{padding:120px 0}
 /* Divider */
 .dv{text-align:center;padding:0}
 .dv hr{border:none;height:1px;background:var(--bg3);max-width:120px;margin:0 auto}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px}
+.gallery-item{border-radius:16px;overflow:hidden;background:var(--bg2)}
+.gallery-item img{width:100%;display:block}
+.gallery-item.wide{grid-column:span 2}
+
+/* FAQ */
+.faq{margin-top:48px;max-width:640px;margin-left:auto;margin-right:auto}
+.faq-item{border-bottom:1px solid var(--bg3)}
+.faq-item:first-child{border-top:1px solid var(--bg3)}
+.faq-q{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:var(--font);font-size:16px;font-weight:500;color:var(--text);text-align:left}
+.faq-q:hover{color:var(--blue)}
+.faq-q span{transition:transform .3s}
+.faq-item.open .faq-q span{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--text2);font-size:14px;line-height:1.7}
+.faq-a-inner{padding:0 0 20px}
 
 /* CTA */
 .cta{text-align:center;padding:100px 0 80px}
@@ -223,35 +256,42 @@ footer{border-top:1px solid var(--bg3);padding:24px 0}
   <div class="w">
     <div class="fl f"><span class="pd"></span> Актуально</div>
     <div class="cards">
-      <!-- Easter Giveaway - full width hero card -->
-      <div class="pcard f" style="background:#1a1a2e">
+      <!-- Easter Giveaway -->
+      <div class="pcard f" style="background:#1a1a2e;min-height:360px">
         <div class="pcard-bg"><img src="easter-giveaway.png" alt="Пасхальный розыгрыш"></div>
         <div class="pcard-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.4) 50%,rgba(0,0,0,.2) 100%)"></div>
         <div class="pcard-content">
           <div class="pcard-label" style="color:#86efac">🐣 Пасхальный розыгрыш</div>
-          <div class="pcard-title" style="color:#fff">Discord Nitro</div>
-          <div class="pcard-sub" style="color:rgba(255,255,255,.65)">Участвуй в розыгрыше прямо на сервере — победитель получает Discord Nitro</div>
+          <div class="pcard-title" style="color:#fff;font-size:clamp(28px,4vw,42px)">Discord Nitro</div>
+          <div class="pcard-sub" style="color:rgba(255,255,255,.65);font-size:15px">Участвуй в розыгрыше — победитель получает Discord Nitro</div>
           <a href="https://discord.gg/lotusblack" class="pcard-link" style="color:#64d2ff" target="_blank">Участвовать →</a>
         </div>
       </div>
-      <!-- SLAY + Tournaments row -->
-      <div class="cards-row">
-        <div class="pcard pcard-sm f" style="background:#0d0d12">
-          <div class="pcard-bg"><img src="slay-event.png" alt="SLAY" style="width:100%;height:100%;object-fit:cover;transform:scale(.85)"></div>
+      <!-- 3-col row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+        <div class="pcard pcard-sm f" style="background:#0d0d12;min-height:300px">
+          <div class="pcard-bg"><img src="https://media.discordapp.net/attachments/1323664159266705409/1484286393004851261/InviteBanner.png?ex=69db56ac&is=69da052c&hm=c49589109db7a26543ea445793ffd274a8e60f195e3b23623edb6860e08e34ec&=&format=webp&quality=lossless&width=1522&height=856" alt="SLAY" style="width:100%;height:100%;object-fit:cover"></div>
           <div class="pcard-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 60%)"></div>
           <div class="pcard-content">
             <div class="pcard-label" style="color:#fbbf24">⚔️ Ивент</div>
-            <div class="pcard-title" style="color:#fff;font-size:clamp(28px,4vw,40px)">SLAY</div>
-            <div class="pcard-sub" style="color:rgba(255,255,255,.55);font-size:15px">Активный ивент — заходи и участвуй</div>
-            <a href="https://discord.gg/lotusblack" class="pcard-link" style="color:#fbbf24" target="_blank">Участвовать →</a>
+            <div class="pcard-title" style="color:#fff;font-size:clamp(20px,3vw,28px)">SLAY</div>
+            <a href="https://discord.gg/lotusblack" class="pcard-link" style="color:#fbbf24;font-size:13px" target="_blank">Участвовать →</a>
           </div>
         </div>
-        <div class="pcard pcard-sm f" style="background:var(--bg2)">
+        <div class="pcard pcard-sm f" style="background:#0a0a14;min-height:300px">
+          <div class="pcard-bg" style="display:flex;align-items:flex-start;justify-content:center;padding-top:16px"><img src="https://media.discordapp.net/attachments/1463201371791556618/1492534340750671903/Comp1_6.gif?ex=69dbae6c&is=69da5cec&hm=ea8654a6b9241080ed86e2f44bf7c88417e15fee7f1b60506274a7c27ccd3fc2&=" alt="Case" style="width:auto;height:55%;object-fit:contain"></div>
+          <div class="pcard-overlay" style="background:linear-gradient(to top,rgba(10,10,20,.9) 0%,rgba(10,10,20,.1) 50%)"></div>
+          <div class="pcard-content">
+            <div class="pcard-label" style="color:#a78bfa">🎰 /case</div>
+            <div class="pcard-title" style="color:#fff;font-size:clamp(20px,3vw,28px)">Выиграй Nitro</div>
+            <a href="https://discord.gg/lotusblack" class="pcard-link" style="color:#a78bfa;font-size:13px" target="_blank">Попробовать →</a>
+          </div>
+        </div>
+        <div class="pcard pcard-sm f" style="background:var(--bg2);min-height:300px">
           <div class="pcard-content" style="justify-content:center;align-items:center;flex:1;display:flex;flex-direction:column">
-            <div class="pcard-label" style="color:var(--blue)">Комьюнити</div>
-            <div class="pcard-title" style="color:var(--text);font-size:clamp(28px,4vw,40px)">500+<br>игроков</div>
-            <div class="pcard-sub" style="color:var(--text2);font-size:15px">Турниры, экономика, боты — всё в одном месте</div>
-            <a href="https://discord.gg/lotusblack" class="pcard-link" style="color:var(--blue)" target="_blank">Присоединиться →</a>
+            <div class="pcard-title" style="color:var(--text);font-size:clamp(28px,4vw,40px)">600+</div>
+            <div class="pcard-sub" style="color:var(--text2);font-size:14px">игроков уже на сервере</div>
+            <a href="https://discord.gg/lotusblack" class="pcard-link" style="color:var(--blue);font-size:13px;margin-top:12px" target="_blank">Присоединиться →</a>
           </div>
         </div>
       </div>
@@ -310,6 +350,19 @@ footer{border-top:1px solid var(--bg3);padding:24px 0}
       <div class="ec"><div class="ec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ec-t">Модерация</div><div class="ec-d">Антиспам, варны, тикеты и автомод</div></div>
       <div class="ec"><div class="ec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="ec-t">Турниры</div><div class="ec-d">CS2 и Dota 2 ивенты с призами</div></div>
     </div>
+    <div class="f" style="margin-top:56px;text-align:center">
+      <div class="sdesc" style="margin:0 auto;font-size:14px;color:var(--text3)">Популярные команды</div>
+    </div>
+    <div class="cmds f">
+      <div class="cmd"><div class="cmd-name">/daily</div><div class="cmd-desc">Ежедневная награда</div></div>
+      <div class="cmd"><div class="cmd-name">/rob</div><div class="cmd-desc">Ограбь другого игрока</div></div>
+      <div class="cmd"><div class="cmd-name">/casino</div><div class="cmd-desc">Испытай удачу</div></div>
+      <div class="cmd"><div class="cmd-name">/stock buy</div><div class="cmd-desc">Купи акции</div></div>
+      <div class="cmd"><div class="cmd-name">/stock sell</div><div class="cmd-desc">Продай на пике</div></div>
+      <div class="cmd"><div class="cmd-name">/balance</div><div class="cmd-desc">Проверь баланс</div></div>
+      <div class="cmd"><div class="cmd-name">/coinflip</div><div class="cmd-desc">Орёл или решка</div></div>
+      <div class="cmds-more">+ ещё 20 команд →</div>
+    </div>
   </div>
 </section>
 
@@ -329,6 +382,11 @@ footer{border-top:1px solid var(--bg3);padding:24px 0}
       <div class="staff-card s-reg"><div class="staff-avatar" style="background:linear-gradient(135deg,#ac8ee0,#e0c3fc);overflow:hidden"><img src="https://cdn.discordapp.com/avatars/870929314315653161/323c5c0f612342e1455b3e00ea8d6a23.webp?size=256" alt="Иллиса" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div><div class="staff-nick">Иллиса</div><div class="staff-role">Гл. модератор</div><div class="staff-quote">⋆✮𝕮𝖔𝖒𝖊 𝖆𝖓𝖉 𝖙𝖆𝖐𝖊 𝖆 𝖜𝖆𝖑𝖐 𝖜𝖎𝖙𝖍 𝖒𝖊.✮⋆</div></div>
       <div class="staff-card s-reg"><div class="staff-avatar" style="background:linear-gradient(135deg,#ff9500,#ffcc00);overflow:hidden"><img src="https://cdn.discordapp.com/avatars/1118912313785864223/9e66d0996920d984ff1f665d22f38e40.webp?size=256" alt="Амстердам" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div><div class="staff-nick">Амстердам</div><div class="staff-role">Модератор</div></div>
       <div class="staff-card s-reg"><div class="staff-avatar" style="background:linear-gradient(135deg,#5ac8fa,#007aff);overflow:hidden"><img src="https://cdn.discordapp.com/avatars/634448898508849163/e29cb5b7c78a5c512e83eeaed57eefc8.webp?size=256" alt="Ульф" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div><div class="staff-nick">Ульф</div><div class="staff-role">Гл. контрол</div></div>
+    </div>
+    <div class="join-staff f">
+      <div class="stitle">Хочешь в команду?</div>
+      <p>Открой тикет на сервере и расскажи о себе</p>
+      <a href="https://discord.gg/lotusblack" class="bp" target="_blank">Подать заявку →</a>
     </div>
   </div>
 </section>
@@ -376,6 +434,59 @@ footer{border-top:1px solid var(--bg3);padding:24px 0}
   </div>
 </section>
 
+<div class="dv"><hr></div>
+
+<section id="gallery">
+  <div class="w">
+    <div class="f" style="text-align:center">
+      <div class="label">Галерея</div>
+      <div class="stitle">Моменты сервера</div>
+    </div>
+    <div class="gallery f">
+      <div class="gallery-item"><img src="https://media.discordapp.net/attachments/727148732377989171/1480297088985337896/0309.gif?ex=69db53d8&is=69da0258&hm=fb22afeb95d1ba5f9b9aaaffa6f21a481e0be2ff4f0ceaa723de385970845ee0&=" alt="Момент"></div>
+      <div class="gallery-item"><img src="https://media.discordapp.net/attachments/727148732377989171/1475658909573320706/0224_2.gif?ex=69db97b4&is=69da4634&hm=5318a1dd69cbea74aeb9e77c7cc82435bc345048c11cc8c1d23130746eaf5186&=" alt="Момент"></div>
+      <div class="gallery-item wide"><img src="https://media.discordapp.net/attachments/727148732377989171/1462100728477782218/pizdec.gif?ex=69db0c2a&is=69d9baaa&hm=0a6f0e01f4cd0e474f91e183fd50ddc61173e794795afd27fe42a31efc392783&=" alt="Момент"></div>
+    </div>
+  </div>
+</section>
+
+<div class="dv"><hr></div>
+
+<section id="faq">
+  <div class="w">
+    <div class="f" style="text-align:center">
+      <div class="label">FAQ</div>
+      <div class="stitle">Частые вопросы</div>
+    </div>
+    <div class="faq f">
+      <div class="faq-item">
+        <button class="faq-q">Как присоединиться к серверу?<span>+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Просто перейди по ссылке <a href="https://discord.gg/lotusblack" target="_blank" style="color:var(--blue)">discord.gg/lotusblack</a> — ты автоматически попадёшь на сервер. Прочитай правила и начинай общаться.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Как заработать монеты?<span>+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Используй /daily для ежедневного бонуса, /rob чтобы ограбить кого-то, /casino и /coinflip для азарта, или торгуй акциями через /stock. Чем активнее — тем больше зарабатываешь.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что такое фондовый рынок?<span>+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">На сервере есть акции — LOTUS, NEON, PHANTOM и другие. Цены меняются каждый час на основе новостей и волатильности. Покупай дёшево, продавай дорого.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Как стать модератором?<span>+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Открой тикет на сервере и расскажи о себе — почему хочешь в команду, сколько времени готов уделять, опыт модерации. Администрация рассмотрит заявку.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что можно выиграть в /case?<span>+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">В кейсах — монеты, роли, уникальные предметы и главный приз — Discord Nitro $10. Открывай и испытывай удачу.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Когда проходят турниры?<span>+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Турниры по CS2 и Dota 2 анонсируются в специальном канале на сервере. Следи за объявлениями — обычно проводим раз в несколько недель.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta">
   <div class="w f">
     <h2>Готов?</h2>
@@ -403,6 +514,8 @@ fetch('https://discord.com/api/guilds/726800846737768488/widget.json')
 if(d.presence_count){document.getElementById('so').textContent=d.presence_count;
 document.getElementById('hb').textContent=d.presence_count+' участников онлайн'}
 document.getElementById('sm').textContent='600+'}).catch(()=>{});
+
+document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const item=b.parentElement;const a=item.querySelector('.faq-a');const open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}})});
 </script>
 </body>
 </html>
