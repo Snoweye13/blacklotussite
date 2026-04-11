@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLACK LOTUS — Gaming Community</title>
 <meta name="description" content="CS2 & Dota 2 турниры, кастомные боты, XP-система. 500+ участников.">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -186,6 +188,10 @@ section{padding:120px 0}
 .gallery-item img{width:100%;display:block}
 .gallery-item.wide{grid-column:span 2}
 
+.rl{list-style:none;display:flex;flex-direction:column;gap:8px}
+.rl li{font-size:14px;color:var(--text2);line-height:1.55;padding-left:14px;position:relative}
+.rl li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--bg3)}
+
 /* FAQ */
 .faq{margin-top:48px;max-width:640px;margin-left:auto;margin-right:auto}
 .faq-item{border-bottom:1px solid var(--bg3)}
@@ -227,7 +233,6 @@ footer{border-top:1px solid var(--bg3);padding:24px 0}
     <li><a href="#tournaments">Турниры</a></li>
     <li><a href="#eco">Экосистема</a></li>
     <li><a href="#staff">Команда</a></li>
-    <li><a href="#rules">Правила</a></li>
     <li><a href="https://discord.gg/lotusblack" class="j" target="_blank">Присоединиться</a></li>
   </ul>
 </div></nav>
@@ -393,49 +398,6 @@ footer{border-top:1px solid var(--bg3);padding:24px 0}
 
 <div class="dv"><hr></div>
 
-<section id="rules">
-  <div class="w">
-    <div class="f" style="text-align:center;margin-bottom:8px">
-      <div class="label">Правила</div>
-      <div class="stitle">Коротко и ясно</div>
-    </div>
-    <div class="rg f">
-      <div class="rc">
-        <div class="rc-h"><span class="rc-num r">01</span>Общие</div>
-        <ul>
-          <li>Реклама без согласования запрещена</li>
-          <li>Обман и мошенничество — бан</li>
-          <li>Деанон без согласия — бан навсегда</li>
-          <li>Домогательства и угрозы запрещены</li>
-          <li>Сексуальный контент запрещён</li>
-          <li>Выдавать себя за другого запрещено</li>
-        </ul>
-      </div>
-      <div class="rc">
-        <div class="rc-h"><span class="rc-num y">02</span>Общение</div>
-        <ul>
-          <li>Оскорбления запрещены</li>
-          <li>Религия, политика, гендер — табу</li>
-          <li>Спам и теги ролей без причины — мут</li>
-          <li>Общение только на русском</li>
-        </ul>
-      </div>
-      <div class="rc">
-        <div class="rc-h"><span class="rc-num b">03</span>Голос</div>
-        <ul>
-          <li>Громкие звуки — мут</li>
-          <li>Плохой микрофон — мут</li>
-          <li>Непристойные названия — запрет</li>
-          <li>Хоппинг между каналами запрещён</li>
-          <li>Частые нарушения = перма-бан</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="dv"><hr></div>
-
 <section id="gallery">
   <div class="w">
     <div class="f" style="text-align:center">
@@ -515,7 +477,7 @@ if(d.presence_count){document.getElementById('so').textContent=d.presence_count;
 document.getElementById('hb').textContent=d.presence_count+' участников онлайн'}
 document.getElementById('sm').textContent='600+'}).catch(()=>{});
 
-document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const item=b.parentElement;const a=item.querySelector('.faq-a');const open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}})});
+document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const item=b.parentElement;const wrap=item.parentElement;const a=item.querySelector('.faq-a');const open=item.classList.contains('open');wrap.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}})});
 </script>
 </body>
 </html>
